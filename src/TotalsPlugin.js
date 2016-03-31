@@ -18,11 +18,17 @@ TotalsPlugin.prototype.init = function (grid) {
 
   var viewport = grid.getCanvasNode().parentElement;
   var width = viewport.offsetWidth;
+  var top = this._rowHeight;
+  
   if (viewport.scrollHeight > viewport.offsetHeight) {
     width -= this._scrollbarWidth;
   }
+  
+  if (viewport.scrollWidth > viewport.offsetWidth) {
+      top += this._scrollbarWidth;
+  }
 
-  this._$totalsViewport = $('<div class="slick-viewport totals-viewport">').css({top: this._rowHeight * -1, width: width});
+  this._$totalsViewport = $('<div class="slick-viewport totals-viewport">').css({top: top * -1, width: width});
   this._$totalsViewport.insertAfter(viewport);
   this._appendTotalsRow(grid);
 
