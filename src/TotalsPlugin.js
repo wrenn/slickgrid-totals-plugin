@@ -44,7 +44,7 @@ TotalsPlugin.prototype.render = function () {
   
   for (var i = 0, l = columns.length; i < l; i++) {
     val = totals[columns[i].id];
-    cells[i].innerText = $.isNumeric(val) ? String(val) : '';
+    cells[i].innerText = $.isNumeric(val) ? val : '';
   }
 };
 
