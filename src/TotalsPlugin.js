@@ -40,9 +40,11 @@ TotalsPlugin.prototype.render = function () {
   var totals = this._grid.getData().getTotals();
   var columns = this._grid.getColumns();
   var cells = this._$totalsRow.children();
-
+  var val;
+  
   for (var i = 0, l = columns.length; i < l; i++) {
-    cells[i].innerText = totals[columns[i].id] || '';
+    val = totals[columns[i].id];
+    cells[i].innerText = $.isNumeric(val) ? String(val) : '';
   }
 };
 
